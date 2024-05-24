@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+    <meta charset="UTF-8">
+    <title>Mi página web </title>
+    <link rel="stylesheet" href="style.css">
+     <style type="text/css" media="screen">
+        .carousel {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+        }
+        #imagen {
+            width: 100%;
+            height: 400px;
+            background-size: cover;
+        }
+    </style>
+</head>
+      </body>
+    <h1>INFORMACION</h1>
+    <h2>Nombre: Luis Ricardo Medina Villagomez</h2>
+    <h1>Carrera: Desarrollo de Software Multiplataforma</h1>
+    <h1>Grupo: 3F</h1>
+    <h1>Correo: 20233tn230@utez.edu.mx</h1>
+    <h1>Matricula: 20233TN230</h1>
+
+    <h1>Estudios: Tecnico Mantenimiento Industrial</h1>
+    <h1>Pasatiempos: </h1>
+    <li>Jugar video Juegos</li>
+    <div class="carousel">
+        <button id="retroceder">Retroceder</button>
+        
+        <img id="imagen" src="img/1.png" alt="Imagen del carrusel">
+        <button id="avanzar">Avanzar</button>
+    </div>
+    <script>
+      const IMAGENES = [
+    'IMG/viaje.webp',
+    'IMG/simio.jpeg',
+    'IMG/spiderman.webp',
+    'IMG/dormir.webp',
+    'IMG/carro.jpeg'
+];
+let posicionActual = 0;
+let $botonRetroceder = document.querySelector('#retroceder');
+let $botonAvanzar = document.querySelector('#avanzar');
+let $imagen = document.querySelector('#imagen');
+
+function pasarFoto() {
+    if (posicionActual >= IMAGENES.length - 1) {
+        posicionActual = 0;
+    } else {
+        posicionActual++;
+    }
+    renderizarImagen();
+}
+
+function retrocederFoto() {
+    if (posicionActual <= 0) {
+        posicionActual = IMAGENES.length - 1;
+    } else {
+        posicionActual--;
+    } 
+    renderizarImagen();
+}
+
+function renderizarImagen() {
+    $imagen.src = IMAGENES[posicionActual];
+}
+
+$botonAvanzar.addEventListener('click', pasarFoto);
+$botonRetroceder.addEventListener('click', retrocederFoto);
+renderizarImagen();
+    </script>
+  </body>
+</html>
